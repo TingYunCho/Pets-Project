@@ -1,0 +1,1 @@
+<br /><b>Notice</b>:  Trying to access array offset on value of type bool in <b>/Applications/XAMPP/xamppfiles/htdocs/pets-project/article-edit.php</b> on line <b>37</b><br />
