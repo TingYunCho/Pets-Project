@@ -7,6 +7,8 @@ if(! isset($_SESSION)){
     exit;
 }
 
+$user = isset($_GET['email']) ? isset($_GET['email']) :0;
+
 $keyword = isset($_GET['keyword']) ? ($_GET['keyword']) : '';
 $qs = [];
 $where = 'WHERE 1';
@@ -33,7 +35,7 @@ if($totalRows!=0){
         exit;
     }
 
-    $sql = sprintf("SELECT * FROM `pets_blog_articles` %s ORDER BY `article_sid` DESC LIMIT %s, %s", $where, ($page-1)*$perPage, $perPage);
+    $sql = sprintf("SELECT * FROM `pets_blog_articles` %s ORDER BY `sid` DESC LIMIT %s, %s", $where, ($page-1)*$perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll();
 }
 
@@ -76,17 +78,21 @@ if($totalRows!=0){
             <tbody>
                 <?php foreach($rows as $r): ?>
                 <tr data-sid="<?= $r['sid'] ?>">
-                    <td><?= $r['article_sid'] ?></td>    
+                    <td><?= $r['sid'] ?></td>    
                     <td><?= $r['article_title'] ?></td>
                     <td><?= $r['category_name'] ?></td>
                     <td><?= $r['sub_category_name'] ?></td>
                     <td><?= $r['publish_date'] ?></td>
                     <td>
-                        <a href="article-edit.php">
+                        <a href="article-edit.php?sid=<?= $r['sid'] ?>">
                             <i class="fas fa-edit text-primary"></i>
                         </a>    
                     </td>
-                    <td><i class="fas fa-trash-alt text-danger"></i></td>
+                    <td>
+                        <a href="article-delete.php?sid=<?=$r['sid'] ?>">
+                            <i class="fas fa-trash-alt text-danger"  onclick="return confirm('確定要刪除第<?=$r['sid'] ?>筆資料嗎？')"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

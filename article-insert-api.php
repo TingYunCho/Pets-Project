@@ -1,7 +1,7 @@
 <?php
 
 include __DIR__. '/partials/init.php';
-// header('Content-Type: application/json');
+header('Content-Type: application/json');
 
 $output = [
     'success' => false,
@@ -36,8 +36,7 @@ if (empty($_POST['sub_category_name'])) {
 $sql = "INSERT INTO `pets_blog_articles`(
                 `article_title`, `category_name`, 
                 `sub_category_name`, `publish_date`
-                ) VALUES (?, ?, ?, NOW()
-                )";
+                ) VALUES (?, ?, ?, NOW())";
 
 $stmt = $pdo->prepare($sql);
 

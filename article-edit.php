@@ -2,14 +2,14 @@
 include __DIR__.'/partials/init.php';
 $title = '修改文章資料';
 
-$sid = isset($_GET['article_sid']) ? intval($_GET['article_sid']) : 0;
-$sql = "SELECT * FROM `pets_blog_articles` WHERE `article_sid` = $sid";
+$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$sql = "SELECT * FROM `pets_blog_articles` WHERE `sid` = $sid";
 $r = $pdo->query($sql)->fetch();
 
-// if(empty($r)){
-//     header('location: article-list.php');
-//     exit;
-// }
+if(empty($r)){
+    header('location:article-list.php');
+    exit;
+}
 ?>
 <style>
     form .form-group small {
@@ -30,7 +30,7 @@ $r = $pdo->query($sql)->fetch();
                     
                     <form name="form1" onsubmit="checkForm(); return false;">
                         <div class="form-group">
-                            <input type="hidden" name="article_sid" value="<?= $r['article_sid'] ?>">
+                            <input type="hidden" name="sid" value="<?= $r['sid'] ?>">
 
                             <label for="article_title">文章標題*</label>
                             <input type="text" class="form-control" id="article_title" name="article_title"

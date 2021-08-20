@@ -4,13 +4,9 @@ $title = '新增文章';
 
 ?>
 
+
 <?php include __DIR__.'/partials/html-head.php'; ?>
 <?php include __DIR__.'/partials/navbar.php'; ?>
-<style>
-    form .form-group small {
-        color: #ccc;
-    }
-</style>
 
 <div class="container">
     <div class="row d-flex justify-content-center my-4">
@@ -58,6 +54,7 @@ $title = '新增文章';
     const cate_name = document.querySelector('#category_name');
     const sub_cate_name = document.querySelector('#sub_category_name');
 
+
     function checkForm(){
         title.nextElementSibling.innerHTML='';
         title.style.border='1px solid #ccc';
@@ -69,23 +66,23 @@ $title = '新增文章';
         let isPass = true;
         if(title.value.length<2){
             isPass = false;
-            title.nextElementSibling.innerHTML='請填寫正確標題';
+            title.nextElementSibling.innerHTML='*標題長度太短';
             title.style.border='1px solid red';
         }
-        if(empty(cate_name.value)){
+        if(cate_name.value.length==0){
             isPass = false;
-            cate_name.nextElementSibling.innerHTML='請填寫正確分類名稱';
+            cate_name.nextElementSibling.innerHTML='*請填寫分類名稱';
             cate_name.style.border='1px solid red';
         }
-        if(empty(sub_cate_name.value)){
+        if(sub_cate_name.value.length==0){
             isPass = false;
-            sub_cate_name.nextElementSibling.innerHTML='請填寫正確次分類名稱';
+            sub_cate_name.nextElementSibling.innerHTML='*請填寫次分類名稱';
             sub_cate_name.style.border='1px solid red';
         }
         if(isPass){
             const fd = new FormData(document.form1);
             fetch('article-insert-api.php',{
-                method: 'POST',
+                method:'POST',
                 body: fd,
             })
             .then(r=>r.json())
@@ -93,7 +90,7 @@ $title = '新增文章';
                 console.log(obj);
                 if(obj.success){
                     alert('新增成功');
-                    header('location:article-list.php');
+                    location.href = 'article-list.php';
                 } else {
                     alert(obj.error);
                 }
