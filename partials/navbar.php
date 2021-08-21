@@ -11,20 +11,16 @@
                         <a class="nav-link" href="#">毛孩找家</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">毛孩旅宿</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">貓貓用品</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">狗狗用品</a>
+                        <a class="nav-link" href="#">毛孩用品</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="article-list.php">鏟屎官大補帖</a>
                     </li>
+                    <?php if(! empty( $_SESSION['user']['avatar'])): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="customers-list.php">客戶資料</a>
                     </li>
+                    <?php endif; ?>
             </ul>
     
             <ul class="navbar-nav">
@@ -33,7 +29,6 @@
                         <a class="nav-link" ><?= $_SESSION['user']['nickname'] ?></a>
                     </li>
                     <li class="nav-item d-flex">
-                        <h4><i class="fas fa-user-edit"></i></h4>
                         <a class="nav-link" href="member-edit.php">編輯個人資料</a>
                     </li>
                     <li class="nav-item">
