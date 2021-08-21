@@ -45,7 +45,7 @@ $stmt->execute([
     $_POST['article_title'],
     $_POST['category_name'],
     $_POST['sub_category_name'],
-    $_POST['publish_date'],
+    // $_POST['publish_date'],
 ]);
 
 $output['rowCount'] = $stmt->rowCount();   //新增的筆數

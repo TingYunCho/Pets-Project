@@ -56,8 +56,10 @@ if(empty($r)){
                                 value="<?= htmlentities($r['publish_date']) ?>">
                             <small class="form-text"></small>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary">修改</button>
+                        <div class="d-flex justify-content-end">
+                            <a href="article-list.php" class="btn btn-secondary mr-2" >返回</a>
+                            <button type="submit" class="btn btn-primary">修改</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -86,12 +88,12 @@ if(empty($r)){
             title.nextElementSibling.innerHTML='請填寫正確標題';
             title.style.border='1px solid red';
         }
-        if(cate_name.value.length<4){
+        if(cate_name.value.length==0){
             isPass = false;
             cate_name.nextElementSibling.innerHTML='請填寫正確分類名稱';
             cate_name.style.border='1px solid red';
         }
-        if(sub_cate_name.value.length<6){
+        if(sub_cate_name.value.length==0){
             isPass = false;
             sub_cate_name.nextElementSibling.innerHTML='請填寫正確次分類名稱';
             sub_cate_name.style.border='1px solid red';
@@ -99,7 +101,7 @@ if(empty($r)){
         if(isPass){
             const fd = new FormData(document.form1);
             fetch('article-edit-api.php',{
-                method: 'POST',
+                method:'POST',
                 body: fd,
             })
             .then(r=>r.json())

@@ -67,7 +67,9 @@ if ($stmt->rowCount()==1) {
     $output['error'] = '';
 } else {
     $output['error'] = '資料沒有修改';
+    echo json_encode($output);
+    exit;
 }
 
 echo json_encode($output);
-header('location:article-list.php');
+// header('location:article-list.php');

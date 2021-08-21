@@ -2,12 +2,10 @@
 include __DIR__.'/partials/init.php';
 $title = '管理後台';
 
-if(! isset($_SESSION)){
+if(! isset($_SESSION['user']['nickname'])){
     header('location: index_.php');
     exit;
 }
-
-$user = isset($_GET['email']) ? isset($_GET['email']) :0;
 
 $keyword = isset($_GET['keyword']) ? ($_GET['keyword']) : '';
 $qs = [];
@@ -71,8 +69,8 @@ if($totalRows!=0){
                     <th scope="col">分類名稱</th>
                     <th scope="col">次分類名</th>
                     <th scope="col">發佈日期</th>
-                    <th scope="col">編輯</th>
-                    <th scope="col">刪除</th>
+                    <th scope="col" class="text-center">編輯</th>
+                    <th scope="col" class="text-center">刪除</th>
                     </tr>
             </thead>
             <tbody>
@@ -83,14 +81,17 @@ if($totalRows!=0){
                     <td><?= $r['category_name'] ?></td>
                     <td><?= $r['sub_category_name'] ?></td>
                     <td><?= $r['publish_date'] ?></td>
-                    <td>
+                    <td class="text-center">
                         <a href="article-edit.php?sid=<?= $r['sid'] ?>">
                             <i class="fas fa-edit text-primary"></i>
                         </a>    
                     </td>
-                    <td>
-                        <a href="article-delete.php?sid=<?=$r['sid'] ?>">
-                            <i class="fas fa-trash-alt text-danger"  onclick="return confirm('確定要刪除第<?=$r['sid'] ?>筆資料嗎？')"></i>
+                    <td class="text-center">
+                        <!-- <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#deleteModal">
+                            <i class="fas fa-trash-alt text-danger"></i>
+                        </button> -->
+                        <a type="button" id="delbtn" data-toggle="modal" data-target="#deleteModal">
+                            <i class="fas fa-trash-alt text-danger"></i>
                         </a>
                     </td>
                 </tr>
@@ -121,6 +122,65 @@ if($totalRows!=0){
         </nav>
     </div>
 </div>
+
+<!-- Vertically centered modal -->
+<!-- <div class="modal-dialog modal-dialog-centered" tabindex="-1"> -->
+<div class="modal fade modal-dialog-centered" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">注意：資料將被刪除！</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary modal-del-btn">確定刪除</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const myTable = document.querySelector('table');
+    const modal = $('#exampleModal');
+    
+    myTable.addEventListener('click', function(event){
+        if(event.target.classList.contains('#delbtn')) {
+            const tr = event.target.closest('tr');
+            const sid = tr.getAttribute('data-sid'); 
+            console.log(sid);
+
+            if(confirm(`是否要刪除編號為 ${sid} 的資料？`)){
+                fetch('article-delete-api.php?sid=' + sid)
+                    .then(r=>r.json())
+                    .then(obj=>{
+                        if(obj.success){
+                            tr.remove();
+                        } else {
+                            alert(obj.error);
+                        }
+                    });
+            }
+        }
+    });
+
+    let willDeleteId = 0;
+    $('#delbtn').on('click', function(event){
+        willDeleteId = event.target.closest('tr').dataset.sid;
+        console.log(willDeleteId);
+        modal.find('.modal-body').html(`確定要刪除編號為 ${willDeleteId} 的資料嗎？`);
+    });
+
+    modal.find('#delbtn').on('click', function(event) {
+        console.log(`article-delete.php?sid=${willDeleteId}`);
+        location.href = `article-delete.php?sid=${willDeleteId}`;
+    }); 
+</script>
 
 <?php include __DIR__.'/partials/scripts.php'; ?>
 <?php include __DIR__.'/partials/html-foot.php'; ?>

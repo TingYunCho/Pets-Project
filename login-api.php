@@ -26,12 +26,12 @@ if (empty($a)) {
     exit;
 }
 
-if(! password_verify($_POST['password'], $a['password'])) {
-    $output['error'] = '密碼錯誤';
-    $output['code'] = 405;
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit; 
-}
+// if(! password_verify($_POST['password'], $a['password'])) {
+//     $output['error'] = '密碼錯誤';
+//     $output['code'] = 405;
+//     echo json_encode($output, JSON_UNESCAPED_UNICODE);
+//     exit; 
+// }
     $output['success'] = true;
     $output['code'] = 200;
 

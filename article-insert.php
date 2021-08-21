@@ -38,8 +38,10 @@ $title = '新增文章';
                             <input type="date" class="form-control" id="publish_date" name="publish_date">
                             <small class="form-text"></small>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary">新增</button>
+                        <div class="d-flex justify-content-end">
+                            <a href="article-list.php" class="btn btn-secondary mr-2" >返回</a>
+                            <button type="submit" class="btn btn-primary">新增</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -68,16 +70,19 @@ $title = '新增文章';
             isPass = false;
             title.nextElementSibling.innerHTML='*標題長度太短';
             title.style.border='1px solid red';
+            console.log('標題長度太短');
         }
         if(cate_name.value.length==0){
             isPass = false;
             cate_name.nextElementSibling.innerHTML='*請填寫分類名稱';
             cate_name.style.border='1px solid red';
+            console.log('未填分類名稱');
         }
         if(sub_cate_name.value.length==0){
             isPass = false;
             sub_cate_name.nextElementSibling.innerHTML='*請填寫次分類名稱';
             sub_cate_name.style.border='1px solid red';
+            console.log('未填次分類名稱');
         }
         if(isPass){
             const fd = new FormData(document.form1);
@@ -89,7 +94,7 @@ $title = '新增文章';
             .then(obj=>{
                 console.log(obj);
                 if(obj.success){
-                    alert('新增成功');
+                    // alert('新增成功');
                     location.href = 'article-list.php';
                 } else {
                     alert(obj.error);
