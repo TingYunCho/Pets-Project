@@ -1,8 +1,8 @@
 <?php
 include __DIR__.'/partials/init.php';
-$title = '管理後台';
+$title = '鏟屎官-管理後台';
 
-if(! isset($_SESSION['user']['nickname'])){
+if(! isset($_SESSION)){
     header('location: index_.php');
     exit;
 }
@@ -82,7 +82,7 @@ if($totalRows!=0){
                     <td><?= $r['sub_category_name'] ?></td>
                     <td><?= $r['publish_date'] ?></td>
                     <td class="text-center">
-                        <a href="article-edit.php?sid=<?= $r['sid'] ?>">
+                        <a type="button" class="btn btn-transparent" href="article-edit.php?sid=<?= $r['sid'] ?>">
                             <i class="fas fa-edit text-primary"></i>
                         </a>    
                     </td>
@@ -90,9 +90,9 @@ if($totalRows!=0){
                         <!-- <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#deleteModal">
                             <i class="fas fa-trash-alt text-danger"></i>
                         </button> -->
-                        <a type="button" id="delbtn" data-toggle="modal" data-target="#deleteModal">
+                        <button type="button" class="btn btn-transparent del1btn" data-toggle="modal" data-target="#exampleModal">
                             <i class="fas fa-trash-alt text-danger"></i>
-                        </a>
+                        </button>
                     </td>
                 </tr>
                 <?php endforeach ?>
@@ -105,7 +105,7 @@ if($totalRows!=0){
                     <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <?php for($i=$page-1; $i<=$page+1; $i++):
+                <?php for($i=$page-5; $i<=$page+5; $i++):
                         if($i>=1 and $i<=$totalPages):
                         $qs['page']=$i; ?>
                 <li class="page-item <?= $i==$page ? 'active':'' ?>">
@@ -123,13 +123,12 @@ if($totalRows!=0){
     </div>
 </div>
 
-<!-- Vertically centered modal -->
-<!-- <div class="modal-dialog modal-dialog-centered" tabindex="-1"> -->
-<div class="modal fade modal-dialog-centered" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">注意：資料將被刪除！</h5>
+        <h5 class="modal-title" id="deleteModalLabel">注意：資料將被刪除！</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -145,42 +144,29 @@ if($totalRows!=0){
   </div>
 </div>
 
-<script>
-    const myTable = document.querySelector('table');
-    const modal = $('#exampleModal');
-    
-    myTable.addEventListener('click', function(event){
-        if(event.target.classList.contains('#delbtn')) {
-            const tr = event.target.closest('tr');
-            const sid = tr.getAttribute('data-sid'); 
-            console.log(sid);
-
-            if(confirm(`是否要刪除編號為 ${sid} 的資料？`)){
-                fetch('article-delete-api.php?sid=' + sid)
-                    .then(r=>r.json())
-                    .then(obj=>{
-                        if(obj.success){
-                            tr.remove();
-                        } else {
-                            alert(obj.error);
-                        }
-                    });
-            }
-        }
-    });
-
-    let willDeleteId = 0;
-    $('#delbtn').on('click', function(event){
-        willDeleteId = event.target.closest('tr').dataset.sid;
-        console.log(willDeleteId);
-        modal.find('.modal-body').html(`確定要刪除編號為 ${willDeleteId} 的資料嗎？`);
-    });
-
-    modal.find('#delbtn').on('click', function(event) {
-        console.log(`article-delete.php?sid=${willDeleteId}`);
-        location.href = `article-delete.php?sid=${willDeleteId}`;
-    }); 
-</script>
-
 <?php include __DIR__.'/partials/scripts.php'; ?>
+<script>
+    // const myTable = document.querySelector('table');
+    const modal = $('#exampleModal');
+
+
+    let willDeleteSid = 0;
+    $('.del1btn').on('click', function(event){
+        willDeleteSid = event.target.closest('tr').dataset.sid;
+        console.log(willDeleteSid);
+        modal.find('.modal-body').html(`確定要刪除第 ${willDeleteSid} 筆資料嗎？`);
+    });
+
+    // 按了確定刪除的按鈕
+    modal.find('.modal-del-btn').on('click', function(event) {
+        console.log(`article-delete.php?sid=${willDeleteSid}`);
+        location.href = `article-delete.php?sid=${willDeleteSid}`;
+    }); 
+
+    // modal 一開始顯示時觸發
+    // modal.on('show.bs.modal', function(event){
+    // console.log(event.target);
+    // });
+
+</script>
 <?php include __DIR__.'/partials/html-foot.php'; ?>
