@@ -2,9 +2,9 @@
 
 include __DIR__. '/partials/init.php';
 
-$sid = isset($_GET['article_sid']) ? intval($_GET['article_sid']) : 0;
+$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 if(! empty($sid)) {
-    $sql = "DELETE FROM `pets_blog_articles` WHERE `article_sid`=$sid";
+    $sql = "DELETE FROM `pets_blog_articles` WHERE `sid`=$sid";
     $stmt = $pdo->query($sql);
 }
 
