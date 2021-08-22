@@ -17,7 +17,8 @@ if (
     empty($_POST['article_title']) or
     empty($_POST['category_name']) or
     empty($_POST['sub_category_name']) or
-    empty($_POST['publish_date'])
+    empty($_POST['publish_date']) or
+    empty($_POST['intro'])
 ) {
     echo json_encode($output);
     exit;
@@ -46,7 +47,7 @@ if (empty($_POST['sub_category_name'])) {
 
 
 $sql = "UPDATE `pets_blog_articles` SET 
-        `article_title`=?,`category_name`=?,`sub_category_name`=?,`publish_date`=?
+        `article_title`=?,`category_name`=?,`sub_category_name`=?,`publish_date`=?, `intro`=?
         WHERE `sid`=?";
 
 
@@ -58,6 +59,7 @@ $stmt->execute([
     $_POST['category_name'],
     $_POST['sub_category_name'],
     $_POST['publish_date'],
+    $_POST['intro'],
     $_POST['sid'],
 ]);
 
