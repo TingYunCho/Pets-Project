@@ -11,7 +11,7 @@
                         <a class="nav-link" href="adopted-data-list.php">毛孩找家</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">毛孩用品</a>
+                        <a class="nav-link" href="product_data.php">毛孩用品</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="article-list.php">鏟屎官大補帖</a>
