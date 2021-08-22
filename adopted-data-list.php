@@ -79,7 +79,15 @@ if ($totalRows != 0) {
    
 </style>
 <div class="container">
-    <div class="row mt-4 mb-2">
+    <div class="row w-100 d-flex justify-content-end">
+        <?php if(isset($_SESSION['user'])): ?>
+        <div class="create-btn">
+        <button type="button" class="btn btn-primary" onclick="location.href='adopted-pet-data-insert.php'">新增寵物認養資料</button>
+        </div>
+        <?php else: ?>  
+        <?php endif; ?>
+    </div>
+    <div class="row  w-100 mt-4 mb-2">
         <div class="col">
             <form action="data-list.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
                 <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" value="<?= htmlentities($keyword) ?>" aria-label="Search">
@@ -87,7 +95,7 @@ if ($totalRows != 0) {
             </form>
         </div>
     </div>
-    <div class="row">
+    <div class="row w-100">
         <div class="col">
             <nav aria-label="Page navigation example">
                 <ul class="pagination d-flex justify-content-end">
@@ -120,7 +128,8 @@ if ($totalRows != 0) {
 
         </div>
     </div>
-    <div class="row">
+   
+    <div class="row w-100">
         <div class="content">
             <div class="card-deck col-lg-12 col-12">
                 <?php foreach ($rows as $r) : ?>
