@@ -38,6 +38,10 @@ $title = '新增文章';
                             <input type="date" class="form-control" id="publish_date" name="publish_date">
                             <small class="form-text"></small>
                         </div>
+                        <div class="form-group">
+                            <label for="intro">文章介紹</label>
+                            <textarea type="text" class="form-control" id="intro" name="intro" col="30" row="5"></textarea>
+                        </div>
                         <div class="d-flex justify-content-end">
                             <a href="article-list.php" class="btn btn-secondary mr-2" >返回</a>
                             <button type="submit" class="btn btn-primary">新增</button>
