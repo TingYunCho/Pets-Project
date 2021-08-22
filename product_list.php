@@ -14,7 +14,7 @@ if(! empty($cate)){
 
 
 // 總筆數
-$t_sql = "SELECT COUNT(1) FROM products $where ";
+$t_sql = "SELECT COUNT(1) FROM product_data $where ";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 
 $totalPages = ceil($totalRows/$perPage); // 總頁數
@@ -24,7 +24,7 @@ if($page>$totalPages) $page=$totalPages;
 $rows = [];
 // 如果有資料
 if($totalRows>0){
-    $sql = sprintf("SELECT * FROM products $where LIMIT %s, %s", ($page-1)*$perPage, $perPage);
+    $sql = sprintf("SELECT * FROM product_data $where LIMIT %s, %s", ($page-1)*$perPage, $perPage);
     $stmt = $pdo->query($sql);
     $rows = $stmt->fetchAll();
 }
