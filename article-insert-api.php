@@ -35,8 +35,8 @@ if (empty($_POST['sub_category_name'])) {
 
 $sql = "INSERT INTO `pets_blog_articles`(
                 `article_title`, `category_name`, 
-                `sub_category_name`, `publish_date`
-                ) VALUES (?, ?, ?, NOW())";
+                `sub_category_name`, `publish_date`, `intro`
+                ) VALUES (?, ?, ?, NOW(), ?)";
 
 $stmt = $pdo->prepare($sql);
 
@@ -45,6 +45,7 @@ $stmt->execute([
     $_POST['article_title'],
     $_POST['category_name'],
     $_POST['sub_category_name'],
+    $_POST['intro'],
     // $_POST['publish_date'],
 ]);
 
