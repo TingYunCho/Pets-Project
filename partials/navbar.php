@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">毛孩找家</a>
+                        <a class="nav-link" href="adopted-data-list.php">毛孩找家</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">毛孩用品</a>
