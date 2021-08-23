@@ -3,7 +3,7 @@ include __DIR__ . '/partials/init.php';
 
 // header('Content-Type: application/json');
 
-$img_upload_path = "adopted-imgs/";
+$img_upload_path = "imgs/adopted-imgs/";
 if (
 
     empty($_POST['name']) or

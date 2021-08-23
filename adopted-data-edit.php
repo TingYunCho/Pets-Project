@@ -71,7 +71,7 @@ $r = $pdo->query($sql)->fetch();
                                 <!-- 預設的大頭貼 -->
                             <?php else: ?>
                                 <!-- 顯示原本的大頭貼 -->
-                                <img src="imgs/<?= $r['avatar'] ?>" alt="" width="300px">
+                                <img src="imgs/adopted-imgs/<?= $r['avatar'] ?>" alt="" width="300px">
                             <?php endif; ?>
                             <img src="imgs/ <?= $r['avatar'] ?>" alt="" width="300px">
                         </div>

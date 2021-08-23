@@ -53,7 +53,7 @@ $title = '新增資料';
                         <div class="form-group">
                             <label for="avatar">大頭貼</label>
                             <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" method="post" enctype="multipart/form-data">
-                            <img src="imgs/ <?= $r['avatar'] ?>" alt="" width="300px">
+                            <img src="imgs/adopted-imgs/ <?= $r['avatar'] ?>" alt="" width="300px">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Create</button>

@@ -89,7 +89,7 @@ if ($totalRows != 0) {
     </div>
     <div class="row  w-100 mt-4 mb-2">
         <div class="col">
-            <form action="data-list.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
+            <form action="adopted-data-list.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
                 <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" value="<?= htmlentities($keyword) ?>" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
@@ -135,7 +135,7 @@ if ($totalRows != 0) {
                 <?php foreach ($rows as $r) : ?>
                     <div class="card p-2" data-sid="<?= $r['sid'] ?>" style="border-radius: 10px;">
 
-                        <img src="adopted-imgs/<?= $r['avatar'] ?>" class="card-img-top" alt="..." style="width: 100%; height:300px;object-fit:cover">
+                        <img src="imgs/adopted-imgs/<?= $r['avatar'] ?>" class="card-img-top" alt="..." style="width: 100%; height:300px;object-fit:cover">
 
                         <div class="card-body">
                             <h3 class="card-title" style="font-weight: 500;"><?= $r['name'] ?></h3>
@@ -157,7 +157,7 @@ if ($totalRows != 0) {
                                 <div class="func d-flex">
                                 <div class="del p-2">
                                     <a href="adopted-data-del.php?sid=<?= $r['sid'] ?>" style="color: gray;text-decoration:none"
-                                    onclick="return confirm('確定要刪除編號 <?= $r['sid']?>的資料嗎？')">
+                                    onclick="return confirm('確定要刪除-- <?= $r['name']?>--的資料嗎？')">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </div>
