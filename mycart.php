@@ -139,7 +139,7 @@
 
     const name = document.querySelector('#name');
     const email = document.querySelector('#email');
-    const iprice = document.querySelector('#iprice');
+    // const iprice = document.querySelector('#iprice');
 
     function checkForm(){
         // 欄位的外觀要回復原來的狀態
@@ -172,7 +172,7 @@
                     console.log(obj);
                     if(obj.success){
                         alert ("訂購成功");
-                        location.href = 'product_list.php';
+                        location.href = 'mycart.php';
                     } else {
                         alert(obj.error);
                     }

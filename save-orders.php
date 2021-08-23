@@ -25,7 +25,7 @@ if(! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
     exit;
 }
 
-$sql = "INSERT INTO `user_details`(`name`, `email,` `mobile`, `address`, `gtotal`) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO `user_details`(`name`, `email`, `mobile`, `address`) VALUES (?, ?, ?, ?)";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
@@ -33,7 +33,7 @@ $stmt->execute([
     $_POST['email'],
     $_POST['mobile'],
     $_POST['address'],
-    $_POST['gtotal'],
+    // $_POST['gtotal'],
 ]);
 
 $output['rowCount'] = $stmt->rowCount(); // 新增的筆數
