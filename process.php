@@ -2,7 +2,7 @@
 
 session_start();
 
-$mysqli = new mysqli('localhost', 'tingyun', 'admin', 'product_data') or die(mysqli_error($mysqli));
+$mysqli = new mysqli('localhost', 'root', '', 'pets_project') or die(mysqli_error($mysqli));
 
 $sid = 0;
 $update = false;
