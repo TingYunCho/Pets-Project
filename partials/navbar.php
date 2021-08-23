@@ -48,9 +48,21 @@
                         <a class="nav-link" href="member-insert.php">註冊</a>
                     </li>
                 <?php endif; ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
-                    </li>
+
+                    <!-- 購物車計數 -->
+                <div>
+                    <?php 
+                        $count=0;
+                        if(isset($_SESSION['cart']))
+                        {
+                            $count=count($_SESSION['cart']);
+                        }
+                    ?>
+                    <a href="mycart.php" class="btn btn-outline-success"><i class="fas fa-shopping-cart"></i> (<?php echo $count; ?>)</a>
+                </div> 
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="mycart.php"><i class="fas fa-shopping-cart"></i></a>
+                    </li> -->
             </ul>
 
         </div>
