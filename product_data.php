@@ -14,6 +14,8 @@
 </head>
 
 <body>
+    <?php include __DIR__.'/partials/html-head.php'; ?>
+    <?php include __DIR__.'/partials/navbar.php'; ?>
     <?php require_once 'process.php'; ?>
 
     <?php
