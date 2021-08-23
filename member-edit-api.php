@@ -4,7 +4,7 @@ include __DIR__. '/partials/init.php';
 header('Content-Type: application/json');
 
 // 要存放圖檔的資料夾
-$folder = __DIR__. '/imgs/';
+$folder = __DIR__. "/imgs/members_imgs/";
 
 
 // 允許的檔案類型
