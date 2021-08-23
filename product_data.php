@@ -34,7 +34,7 @@
     <?php endif ?>
     <div class="container">
         <?php
-        $mysqli = new mysqli('localhost', 'tingyun', 'admin', 'product_data') or die(mysqli_error($mysqli));
+        $mysqli = new mysqli('localhost', 'root', '', 'pets_project') or die(mysqli_error($mysqli));
         $result = $mysqli->query("SELECT * FROM product_data") or die($mysqli->error);
         // pre_r($result);
         ?>
