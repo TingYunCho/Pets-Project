@@ -66,35 +66,14 @@
         <div class="col-lg-3">
             <div class= "border bg-light rounded p-4">
                 <h4>總金額:</h4>
-                <h6 class="text-right" id="gtotal">元</h6>
+                <h6 class="text-right gtotal" id="gtotal">元</h6>
                 <br>
                 <?php
                 if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0)
                     {
                 ?>
-                <!-- <form action="save-orders.php" method="POST">
-                    <div class="form-group">
-                        <label>姓名</label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>電話</label>
-                        <input type="number" name="mobile" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>地址</label>
-                        <input type="text" name="address" class="form-control" required>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="pay_mode" value="COD " id="defaultCheck1" checked>
-                        <label class="form-check-label" for="defaultCheck1">
-                            現金支付
-                        </label>
-                    </div>
-                    <br>
-                    <button class="btn btn-primary btn-block" name="purchase">商品結帳</button>
-                </form> -->
                 <form name="form1" onsubmit="checkForm(); return false;">
+                <!-- <form action="purchase-api.php" method="POST"> -->
                         <div class="form-group">
                             <label for="name">姓名 *</label>
                             <input type="text" class="form-control" id="name" name="name">
@@ -192,14 +171,15 @@
                 .then(obj=>{
                     console.log(obj);
                     if(obj.success){
-                        location.href = '#';
+                        alert ("訂購成功");
+                        location.href = 'product_list.php';
                     } else {
                         alert(obj.error);
                     }
                 })
                 .catch(error=>{
                     console.log('error:', error);
-                });
+                })
         }
     }
 </script>
