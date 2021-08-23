@@ -49,7 +49,7 @@
                                 <!-- 預設的大頭貼 -->
                             <?php else: ?>
                                 <!-- 顯示原本的大頭貼 -->
-                                <img src="imgs/<?= $r['avatar'] ?>" alt="" width="300px">
+                                <img src="imgs/members_imgs/<?= $r['avatar'] ?>" alt="" width="300px">
                             <?php endif; ?>
                         </div>   
                         <div class="form-group">
