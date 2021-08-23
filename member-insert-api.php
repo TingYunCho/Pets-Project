@@ -1,7 +1,7 @@
 <?php
 include __DIR__. '/partials/init.php';
 
-$folder = __DIR__. '/imgs/';
+$folder = __DIR__. "/imgs/members_imgs/";
 
 
 // 允許的檔案類型
