@@ -33,7 +33,7 @@
                     </li>
                     <li class="nav-item">
                        <?php if(! empty( $_SESSION['user']['avatar'])): ?>
-                            <img src="imgs/<?= $_SESSION['user']['avatar'] ?>" alt="" width="50px" style="border-radius:50%">
+                            <img src="imgs/members_imgs/<?= $_SESSION['user']['avatar'] ?>" alt="" width="50px" style="border-radius:50%;">
                         <?php endif; ?>
                     </li>
 
