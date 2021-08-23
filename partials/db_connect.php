@@ -3,8 +3,8 @@
 // 以下連線資料如有錯誤，則網頁上會顯示錯誤訊息，若正確則呈現空白頁
 $db_host = 'localhost';     // 欲連線的主機名稱
 $db_name = 'pets_project';  // 欲連線的資料庫名稱
-$db_user = 'tingyun';       // 欲連線的用戶名稱，之前在PHPmyadmin的root新增的使用者帳號
-$db_pass = 'admin';         // 欲連線的用戶密碼，之前在PHPmyadmin的root新增的使用者密碼，若沒有設定密碼則可為空字串
+$db_user = 'root';       // 欲連線的用戶名稱，之前在PHPmyadmin的root新增的使用者帳號
+$db_pass = '';         // 欲連線的用戶密碼，之前在PHPmyadmin的root新增的使用者密碼，若沒有設定密碼則可為空字串
 $db_charset = 'utf8';       // 欲連線的資料編碼
 
 // dsn = data source name，以下設定的字串中間都不要有任何空白 
