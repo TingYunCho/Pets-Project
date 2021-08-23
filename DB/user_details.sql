@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-08-22 13:27:30
+-- 產生時間： 2021-08-23 11:55:03
 -- 伺服器版本： 10.4.20-MariaDB
 -- PHP 版本： 7.4.21
 
@@ -30,11 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `user_details` (
   `order_id` int(255) NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gtotal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `creat_at` datetime NOT NULL
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `user_details`
+--
+
+INSERT INTO `user_details` (`order_id`, `name`, `email`, `mobile`, `address`) VALUES
+(1, 'LU TING', 'lutingyu29@gmail.com', '0927065509', 'Rm. 1, 5F.,  No. 201, Fuyuan St.,  Songshan Dist.,'),
+(2, '郭家伶', 'ming@gg.com', '+886913117335', 'reonekusuto sansyainkirara203');
 
 --
 -- 已傾印資料表的索引
@@ -54,7 +61,7 @@ ALTER TABLE `user_details`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
